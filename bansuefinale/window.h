@@ -38,9 +38,37 @@ QPushButton *B8 = new QPushButton("7");
 QPushButton *B9 = new QPushButton("8");
 QPushButton *B10 = new QPushButton("9");
 QPushButton *B11 = new QPushButton("0");
-QPushButton *Button = new QPushButton();
-QPushButton *erase = new QPushButton("<");
+QPushButton *Button = new QPushButton("ABC");
+QPushButton *erase = new QPushButton("123");
 int tentative=0;
+QPushButton *B12 = new QPushButton("A");
+QPushButton *B13 = new QPushButton("B");
+QPushButton *B14 = new QPushButton("C");
+QPushButton *B15 = new QPushButton("D");
+QPushButton *B16 = new QPushButton("E");
+QPushButton *B17 = new QPushButton("F");
+QPushButton *B18 = new QPushButton("G");
+QPushButton *B19 = new QPushButton("H");
+QPushButton *B20 = new QPushButton("I");
+QPushButton *B21 = new QPushButton("J");
+QPushButton *B22 = new QPushButton("K");
+QPushButton *B23 = new QPushButton("K");
+QPushButton *B24 = new QPushButton("L");
+QPushButton *B25 = new QPushButton("M");
+QPushButton *B26 = new QPushButton("N");
+QPushButton *B27 = new QPushButton("O");
+QPushButton *B28 = new QPushButton("P");
+QPushButton *B29 = new QPushButton("Q");
+QPushButton *B30 = new QPushButton("R");
+QPushButton *B31 = new QPushButton("S");
+QPushButton *B32 = new QPushButton("T");
+QPushButton *B33 = new QPushButton("U");
+QPushButton *B34 = new QPushButton("V");
+QPushButton *B35 = new QPushButton("W");
+QPushButton *B36 = new QPushButton("X");
+QPushButton *B37 = new QPushButton("Y");
+QPushButton *B38 = new QPushButton("Z");
+
 
 //QPushButton *Bouton[10];
 //QHBoxLayout *Horiz_layout = new QHBoxLayout;
@@ -48,6 +76,7 @@ int tentative=0;
 
 public slots:
 void erased();
+void abcd();
 void connecslot();
 void clickedSlot();
 void masque();

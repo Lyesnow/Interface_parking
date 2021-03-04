@@ -27,6 +27,11 @@ public:
 
 
 double solde = 1200;
+double placeparking = 100;
+double visiteur = 0;
+double statistique = 0;
+double statsemaine =0;
+double employer = 0;
 double soldeclient = 3500;
 double autreclient = 2500;
 int choix1=1;
@@ -40,14 +45,14 @@ int histo2=0;
 private:
 
 
-    QPushButton *B1 = new QPushButton("Afficher");
-    QPushButton *B2 = new QPushButton("Créditer");
+    QPushButton *B1 = new QPushButton("Afficher Matricule ");
+    QPushButton *B2 = new QPushButton("Afficher Badges");
     QPushButton *B3 = new QPushButton("Débiter");
     QPushButton *B4 = new QPushButton("Virement");
     QPushButton *B5 = new QPushButton("Commander un chequier");
     QPushButton *B6 = new QPushButton("Consulter votre RIB");
-    QPushButton *B7 = new QPushButton("Confirmer");
-    QPushButton *B8 = new QPushButton("Confirmer");
+    QPushButton *B7 = new QPushButton("Autoriser");
+    QPushButton *B8 = new QPushButton("Refuser");
     QPushButton *B9 = new QPushButton("Confirmer");
     QPushButton *B10 = new QPushButton("Aide");
     QPushButton *B11 = new QPushButton( "Quitter");
@@ -58,6 +63,11 @@ private:
     QLineEdit *banqEdit4;
 
     QLabel *Lyesolde = new QLabel;
+    QLabel *Date = new QLabel;
+    QLabel *Employer = new QLabel;
+    QLabel *Statisti = new QLabel;
+    QLabel *Statsemaines = new QLabel;
+    QLabel *Visiteur= new QLabel;
     QLabel *viremment = new QLabel;
     QLabel *vtrhisto = new QLabel;
 

@@ -7,13 +7,24 @@
 #include <QMessageBox>
 #include <QPixmap>
 #include <QApplication>
+#include <QDateTime>
 
 Compte::Compte(QWidget *parent) :
    QWidget(parent)
 {
 
-    QGroupBox *echoGroup = new QGroupBox(tr("N° Compte 45678  Nom= Kitano Prenom:Ken "));
-    Lyesolde->setText("Solde : "+ QString::number(solde) + " €");                 //("Solde : "+ QString::number(solde) + " €");
+    QGroupBox *echoGroup = new QGroupBox(tr(" ")+  QDateTime::currentDateTime().toString("dddd dd MMMM yyyy hh:mm:ss.")); // Je récupere la date depuis le systeme
+
+    Lyesolde->setText("PLace parking "+ QString::number(placeparking) + " disponibles");                 //("Solde : "+ QString::number(solde) + " €");
+    Employer->setText("Employer présent :" + QString::number(employer));
+    Visiteur->setText("Visiteur présent :" + QString::number(visiteur));
+    Statisti->setText("Statistique journer :" + QString::number(statistique));
+    Statsemaines->setText("Statistique semaine :" + QString::number(statsemaine));
+    //B7->setIcon(QIcon("logopass.png"));
+    B7->setIcon(QIcon(":/home/sn10/Bureau/bansuefinale/logopass.png"));
+    //B7->setIconSize(QSize(25, 25));
+
+
     banqEdit = new QLineEdit;
     banqEdit->setPlaceholderText("Inserer votre somme ");
     banqEdit->setMaxLength(9); // je met 9 cara max
@@ -33,31 +44,37 @@ Compte::Compte(QWidget *parent) :
     banqEdit4->setMaxLength(25); // je met 9 cara max
     banqEdit4->hide();
     //vtrhisto->setText("Historique des opération"+);
-    B7->hide();
-    B8->hide();
+
     B9->hide();
+
 
     QGridLayout *interbanq = new QGridLayout; // crée une grille dans j'insère mes boutons à l'intérieure
      // interbanq->addWidget(debut,0, 0);
-    interbanq->addWidget(Lyesolde,1,1,1,1);
+
+    interbanq->addWidget(Lyesolde,0,2,1,1);
+    interbanq->addWidget(Employer,0,2,0,1);
+    interbanq->addWidget(Visiteur,2,2,1,1);
+    interbanq->addWidget(Statisti,0,3,1,1);
+    interbanq->addWidget(Statsemaines,0,3,0,1);
+    //1,1,1,1
         interbanq->addWidget(B1,0,0,1,1);
          interbanq->addWidget(B2,1,0,1,1);
-         interbanq->addWidget(B3, 0,2,1,1);
+       //  interbanq->addWidget(B3, 0,2,1,1);
          //interbanq->addWidget(B4, 0,2,0,1);
-         interbanq->addWidget(B5, 2,2,1,1);
-         interbanq->addWidget(B6, 2,0);
-         interbanq->addWidget(B10, 3,0,1,1);
-         interbanq->addWidget(B4, 3,2,1,1);
-         interbanq->addWidget(B11, 4,1,1,1);
-         interbanq->addWidget(banqEdit, 5,0,1,2);
-         interbanq->addWidget(banqEdit2, 5,0,1,2);
-         interbanq->addWidget(banqEdit3, 7,0,1,2);
-        interbanq->addWidget(banqEdit4, 7,0,1,2);
-         interbanq->addWidget(viremment,6,0,1,2);
-         interbanq->addWidget(B7, 5,2,1,2);
-          interbanq->addWidget(B8, 5,2,1,2);
-            interbanq->addWidget(B9, 7,2,1,2);
-            interbanq->addWidget(vtrhisto, 8,0,1,2);
+        // interbanq->addWidget(B5, 2,2,1,1);
+        // interbanq->addWidget(B6, 2,0);
+         //interbanq->addWidget(B10, 3,0,1,1);
+        // interbanq->addWidget(B4, 3,2,1,1);
+         //interbanq->addWidget(B11, 4,1,1,1);
+         //interbanq->addWidget(banqEdit, 5,0,1,2);
+        // interbanq->addWidget(banqEdit2, 5,0,1,2);
+        // interbanq->addWidget(banqEdit3, 7,0,1,2);
+       // interbanq->addWidget(banqEdit4, 7,0,1,2);
+        // interbanq->addWidget(viremment,6,0,1,2);
+         interbanq->addWidget(B7, 3,2,2,1);
+          interbanq->addWidget(B8, 3,0,2,2);
+         //   interbanq->addWidget(B9, 7,2,1,2);
+          //  interbanq->addWidget(vtrhisto, 8,0,1,2);
 
      //interbanq->addWidget(echoLineEdit, 4, 0, 1, 2);
      echoGroup->setLayout(interbanq);
@@ -79,11 +96,12 @@ connect(B10, SIGNAL(clicked()),this, SLOT(aideban()));
 QGridLayout *layout = new QGridLayout;
 layout->addWidget(echoGroup, 0, 0);// 0,0 définit la position de notre layout
 setLayout(layout);
-setWindowTitle(tr("BNP PARIBAS"));// définit le titre de l'application
+setWindowTitle(tr("Gestion parking"));// définit le titre de l'application
 }
 void Compte :: Afficher(){
     QLabel *valide = new QLabel;
-    valide = new QLabel(tr("Numéro de téléphone: 0603484848 \nVotre adresse: Rue des Lumières \nAdresse email: LecorburSN2@gmail.com "));
+
+    valide = new QLabel(tr("Numéro du matricule : 0603484848 \nVisieur \n ")+ QTime::currentTime().toString("hh:mm:ss"));
     layout()->addWidget(valide);
 
 
@@ -117,38 +135,53 @@ void Compte :: faireUnVirement(){
 }
 
 void Compte:: crediter(){
-    banqEdit->show();
-    B7->show();
+//    banqEdit->show();
+//    B7->show();
+    QLabel *valide = new QLabel;
+
+    valide = new QLabel(tr("Numéro du Badge : 0603484848 \nEmployer : \n ")+ QTime::currentTime().toString("hh:mm:ss"));
+    layout()->addWidget(valide);
 
 
 }
 void Compte:: confirm(){
      B7->show();
-          solde = solde + banqEdit->text().toDouble();
+          //solde = solde + banqEdit->text().toDouble();
 
-          histo = histo +  banqEdit->text().toDouble();
-          QLabel *Lyesold = new QLabel("Vous avez rajouter +"+ QString::number(histo) + " €");
-           banqEdit->setText(QString::number(solde));
-          Lyesolde->setText("Solde : "+ QString::number(solde) + " €");
-          banqEdit->clear();
+          //histo = histo +  banqEdit->text().toDouble();
+          //QLabel *Lyesold = new QLabel("Vous avez rajouter +"+ QString::number(histo) + " €");
+           //banqEdit->setText(QString::number(solde));
+//          Lyesolde->setText("Solde : "+ QString::number(solde) + " €");
+//          banqEdit->clear();
 
 
-          layout()->addWidget(Lyesold);
+//          layout()->addWidget(Lyesold);
+    B7->setStyleSheet("QPushButton{background-color: green}");
 
+     QLabel *valide = new QLabel;
+
+     valide = new QLabel(tr("vous avez autoriser l'entrer au parking ")+ QTime::currentTime().toString("hh:mm:ss"));
+     layout()->addWidget(valide);
 
 
 }
 void Compte:: confirm2(){
      B8->show();
           solde = solde - banqEdit2->text().toDouble();
-          histo2 = histo2 +  banqEdit2->text().toDouble();
+//          histo2 = histo2 +  banqEdit2->text().toDouble();
 
-          QLabel *Lyesold = new QLabel("Vous avez retirer -  "+ QString::number(histo2) + " €");
-          banqEdit2->setText(QString::number(solde));
-          Lyesolde->setText("Solde : "+ QString::number(solde) + " €");
-          banqEdit2->clear();
+//          QLabel *Lyesold = new QLabel("Vous avez retirer -  "+ QString::number(histo2) + " €");
+//          banqEdit2->setText(QString::number(solde));
+//          Lyesolde->setText("Solde : "+ QString::number(solde) + " €");
+//          banqEdit2->clear();
 
-          layout()->addWidget(Lyesold);
+//          layout()->addWidget(Lyesold);
+
+          QLabel *valide = new QLabel;
+           B8->setStyleSheet("QPushButton{background-color: red}");
+          valide = new QLabel(tr("vous avez refuser l'entrer au parking ")+ QTime::currentTime().toString("hh:mm:ss"));
+          layout()->addWidget(valide);
+
 
 
 
